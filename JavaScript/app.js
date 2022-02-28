@@ -5,10 +5,16 @@ const searchByName = () => {
     const searchInput = document.getElementById('search-input');
     const searchValue = searchInput.value;
 
-    const url = ` https://openapi.programming-hero.com/api/phones?search=${searchValue}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayPhones(data))
+    if (searchValue == '') {
+        document.getElementById('warning-massage').style.display = 'block';
+    } else {
+        const url = ` https://openapi.programming-hero.com/api/phones?search=${searchValue}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayPhones(data))
+
+        document.getElementById('warning-massage').style.display = 'none';
+    }
 }
 
 const displayPhones = (phones) => {
