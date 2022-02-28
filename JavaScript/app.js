@@ -1,4 +1,7 @@
 const searchByName = () => {
+    const searchedPhones = document.getElementById('searched-phones');
+    searchedPhones.innerHTML = '';
+
     const searchInput = document.getElementById('search-input');
     const searchValue = searchInput.value;
 
@@ -9,6 +12,9 @@ const searchByName = () => {
 }
 
 const displayPhones = (phones) => {
+    const searchInput = document.getElementById('search-input');
+    searchInput.value = '';
+
     const searchedPhones = document.getElementById('searched-phones');
 
     for (const phone of phones.data) {
