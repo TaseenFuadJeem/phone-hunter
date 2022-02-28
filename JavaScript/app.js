@@ -12,8 +12,18 @@ const displayPhones = (phones) => {
     const searchedPhones = document.getElementById('searched-phones');
 
     for (const phone of phones.data) {
-        const h1 = document.createElement('h1');
-        h1.innerText = `${phone.phone_name}`
-        searchedPhones.appendChild(h1);
+        const div = document.createElement('div');
+        div.innerHTML = `
+        <div class="card mx-auto mt-3 rounded-3" style="width: 18rem;">
+            <img src="${phone.image}" class="card-img-top img-fluid p-5" alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">Model : ${phone.phone_name}</h5>
+                    <h5 class="card-text">Brand : ${phone.brand}</h5>
+                    <a href="#" class="btn btn-primary">More detail</a>
+                </div>
+        </div>
+        `
+        div.classList.add('col-lg-4')
+        searchedPhones.appendChild(div);
     }
 }
