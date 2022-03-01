@@ -31,14 +31,16 @@ const searchByName = () => {
 }
 
 const displayPhones = (phones) => {
+    document.getElementById('seemore-btn').style.display = 'none';
     const searchInput = document.getElementById('search-input');
     searchInput.value = '';
 
     const searchedPhones = document.getElementById('searched-phones');
 
-    for (const phone of phones) {
+    for (const phone of phones.slice(0, 20)) {
         const div = document.createElement('div');
         div.innerHTML = `
+        <section>
         <div class="card mx-auto mt-3 rounded-3" style="width: 18rem;">
             <img src="${phone.image}" class="card-img-top img-fluid p-5" alt="...">
              <div class="card-body">
@@ -47,9 +49,16 @@ const displayPhones = (phones) => {
                     <a href="#" onclick="phoneDetails('${phone.slug}')" class="btn btn-primary">More detail</a>
                 </div>
         </div>
+        </section>
         `
         div.classList.add('col-lg-4')
         searchedPhones.appendChild(div);
+
+    }
+    const CountDiv = document.getElementsByTagName("section").length;
+    console.log(CountDiv);
+    if (CountDiv > 20) {
+        document.getElementById('seemore-btn').style.display = 'block';
     }
 }
 
@@ -82,7 +91,7 @@ const displayPhoneDetails = (info) => {
     }
 
     div.innerHTML = `
-    <div class="card mx-auto mb-3 rounded-3 my-4" style="max-width: 940px;">
+    <div class="card mx-auto mb-3 rounded-3 my-4" style="max-width: 1165px;">
         <div class="row g-0">
             <div class="col-md-4 d-flex">
                  <img src="${info.data.image}" class="img-fluid rounded-start p-5" alt="...">
@@ -100,9 +109,13 @@ const displayPhoneDetails = (info) => {
                     <p class="card-text"><span class="fw-bold">WLAN :</span> ${info?.data?.others?.WLAN}</p>
                     <p class="card-text"><small class="text-muted">${info?.data?.releaseDate}${showRelease()}
                     </small ></p >
+                    <button type="button" class="btn btn-primary">Order Now</button>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="my-5">
+    <hr>
     </div>
     `
     displayDetailDiv.appendChild(div);

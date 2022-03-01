@@ -4,3 +4,10 @@ body{
 #warning-massage{
     display: none;
 }
+#seemore-btn{
+    display: none ;
+}
+.arrow{
+    position: relative;
+    top: 5px;
+}
