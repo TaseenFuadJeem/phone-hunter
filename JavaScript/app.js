@@ -3,6 +3,8 @@
 const searchByName = () => {
     const searchedPhones = document.getElementById('searched-phones');
     searchedPhones.innerHTML = '';
+    const displayDetailDiv = document.getElementById('display-details');
+    displayDetailDiv.innerHTML = '';
 
     const searchInput = document.getElementById('search-input');
     const searchValue = searchInput.value;
@@ -54,7 +56,8 @@ const phoneDetails = (details) => {
 }
 
 const displayPhoneDetails = (info) => {
-    const header = document.getElementById('header');
+    const displayDetailDiv = document.getElementById('display-details');
+    displayDetailDiv.innerHTML = '';
     const div = document.createElement('div');
 
     div.innerHTML = `
@@ -80,5 +83,5 @@ const displayPhoneDetails = (info) => {
         </div>
     </div>
     `
-    header.appendChild(div);
+    displayDetailDiv.appendChild(div);
 }
