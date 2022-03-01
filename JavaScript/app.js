@@ -60,8 +60,8 @@ const displayPhoneDetails = (info) => {
     div.innerHTML = `
     <div class="card mx-auto mb-3 rounded-3 my-4" style="max-width: 940px;">
         <div class="row g-0">
-            <div class="col-md-4">
-                 <img src="${info.data.image}" class="img-fluid rounded-start p-3" alt="...">
+            <div class="col-md-4 d-flex">
+                 <img src="${info.data.image}" class="img-fluid rounded-start p-5" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
