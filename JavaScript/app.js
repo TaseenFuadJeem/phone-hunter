@@ -68,6 +68,12 @@ const displayPhoneDetails = (info) => {
                     <h5 class="card-title">${info.data.name}</h5>
                     <p class="card-text"><span class="fw-bold">Storage :</span> ${info.data.mainFeatures.storage}</p>
                     <p class="card-text"><span class="fw-bold">Sensors :</span> ${info.data.mainFeatures.sensors}</p>
+                    <p class="card-text"><span class="fw-bold">Bluetooth :</span> ${info.data.others.Bluetooth}</p>
+                    <p class="card-text"><span class="fw-bold">GPS :</span> ${info.data.others.GPS}</p>
+                    <p class="card-text"><span class="fw-bold">NFC :</span> ${info.data.others.NFC}</p>
+                    <p class="card-text"><span class="fw-bold">Radio :</span> ${info.data.others.Radio}</p>
+                    <p class="card-text"><span class="fw-bold">USB :</span> ${info.data.others.USB}</p>
+                    <p class="card-text"><span class="fw-bold">WLAN :</span> ${info.data.others.WLAN}</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
