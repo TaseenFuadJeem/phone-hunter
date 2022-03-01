@@ -15,7 +15,16 @@ const searchByName = () => {
         const url = ` https://openapi.programming-hero.com/api/phones?search=${searchValue}`
         fetch(url)
             .then(res => res.json())
-            .then(data => displayPhones(data))
+            .then(data => {
+                let error = data.data.length == 0;
+                if (error == true) {
+                    document.getElementById('warning-massage').style.display = 'block';
+                    searchInput.value = '';
+                } else {
+                    displayPhones(data.data);
+                    document.getElementById('warning-massage').style.display = 'none';
+                }
+            })
 
         document.getElementById('warning-massage').style.display = 'none';
     }
@@ -27,7 +36,7 @@ const displayPhones = (phones) => {
 
     const searchedPhones = document.getElementById('searched-phones');
 
-    for (const phone of phones.data) {
+    for (const phone of phones) {
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="card mx-auto mt-3 rounded-3" style="width: 18rem;">
