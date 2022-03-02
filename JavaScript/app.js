@@ -56,7 +56,6 @@ const displayPhones = (phones) => {
 
     }
     const CountDiv = document.getElementsByTagName("section").length;
-    console.log(CountDiv);
     if (CountDiv > 20) {
         document.getElementById('seemore-btn').style.display = 'block';
     }
@@ -90,7 +89,40 @@ const displayPhoneDetails = (info) => {
         }
     }
 
-    div.innerHTML = `
+
+    if (info?.data?.others?.Bluetooth == undefined && info?.data?.others?.GPS == undefined && info?.data?.others?.NFC == undefined && info?.data?.others?.Radio == undefined && info?.data?.others?.USB == undefined && info?.data?.others?.WLAN == undefined) {
+        div.innerHTML = `
+    <div class="card mx-auto mb-3 rounded-3 my-4" style="max-width: 1165px;">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex">
+                 <img src="${info.data.image}" class="img-fluid rounded-start p-5" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${info.data.name}</h5>
+                    <p class="card-text"><span class="fw-bold">Storage :</span> ${info.data.mainFeatures.storage}</p>
+                    <p class="card-text"><span class="fw-bold">Sensors :</span> ${info.data.mainFeatures.sensors}</p>
+                    <p class="card-text"><span class="fw-bold">Bluetooth :</span> No detail found.</p>
+                    <p class="card-text"><span class="fw-bold">GPS :</span> No detail found.</p>
+                    <p class="card-text"><span class="fw-bold">NFC :</span> No detail found.</p>
+                    <p class="card-text"><span class="fw-bold">Radio :</span> No detail found.</p>
+                    <p class="card-text"><span class="fw-bold">USB :</span> No detail found.</p>
+                    <p class="card-text"><span class="fw-bold">WLAN :</span> No detail found.</p>
+                    <p class="card-text"><small class="text-muted">${info?.data?.releaseDate}${showRelease()}
+                    </small ></p >
+                    <button type="button" class="btn btn-primary">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-5">
+    <hr>
+    </div>
+    `
+        displayDetailDiv.appendChild(div);
+    }
+    else {
+        div.innerHTML = `
     <div class="card mx-auto mb-3 rounded-3 my-4" style="max-width: 1165px;">
         <div class="row g-0">
             <div class="col-md-4 d-flex">
@@ -118,5 +150,9 @@ const displayPhoneDetails = (info) => {
     <hr>
     </div>
     `
-    displayDetailDiv.appendChild(div);
+        displayDetailDiv.appendChild(div);
+    }
+
+
+
 }
